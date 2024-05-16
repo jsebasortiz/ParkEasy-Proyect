@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\TipoVehiculoController;
+use App\Http\Controllers\Api\V1\FacturaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,13 @@ Route::prefix('v1')->group(function () {
 
     Route::get('categorias', [CategoryController::class, 'index']);
     Route::get('tipovehiculos', [TipoVehiculoController::class, 'index']);
+    //Facturas 
+    Route::get('facturaver', [FacturaController::class, 'index']);
+    Route::post('facturaagregar', [FacturaController::class, 'store']);
+    Route::delete('facturadestroy/{id_factura}', [FacturaController::class, 'destroy']);
+    Route::put('facturaact/{id_factura}', [FacturaController::class, 'update']);
+
+
     Route::post('tipovehiculosstore', [TipoVehiculoController::class, 'store']);
     Route::delete('tipovehiculosdestroy/{id_vehiculo}', [TipoVehiculoController::class, 'destroy']);
     // Route::get('favorites', [FavoriteController::class, 'index']);
