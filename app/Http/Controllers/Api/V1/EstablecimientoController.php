@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Establecimiento;
 
 class EstablecimientoController extends Controller{
+
+    //Index
     public function index(Request $request)
     {
         $establecimiento = Establecimiento::all();
@@ -16,7 +18,7 @@ class EstablecimientoController extends Controller{
             'establecimiento' => $establecimiento
         ]);
     }
-
+    //Create
     public function store(Request $request)
     {
         //try {
@@ -34,7 +36,7 @@ class EstablecimientoController extends Controller{
         //     ], 500);
         // }
     }
-
+    //Show
     public function show($id)
     {
         $establecimiento = Establecimiento::find($id);
@@ -44,29 +46,33 @@ class EstablecimientoController extends Controller{
         }
         return response()->json(['establecimiento' => $establecimiento]);
     }
-
-    public function update(Request $request, $id)
+    //Update
+    public function update(Request $request)
     {
         try {
-            $establecimiento = Establecimiento::find($id);
+            $establecimiento = Establecimiento::find($request->id);
+            //dd($request->request);
 
             if (!$establecimiento) {
-                return response()->json(['error' => 'La categoría no existe.'], 404);
+                return response()->json(['error' => 'La establecimiento no existe.'], 404);
             }
-            $tipovehiculo->update($request->all());
+            /*$establecimiento->placa_vehiculo = $request->placa_vehiculo;
+            $establecimiento->placa_vehiculo = $request->placa_vehiculo;
+            $establecimiento->update();*/
+            $establecimiento->update($request->all()) ;
             return response()->json([
                 'status' => true,
-                'message' => "Establecimiento actualizada correctamente.",
+                'message' => "establecimiento actualizada correctamente.",
                 'establecimiento' => $establecimiento
-            ], 200);
+            ], 200); 
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => "Error al actualizar el Establecimiento"
+                'message' => "Error al actualizar la establecimiento"
             ], 500);
         }
-    }
-
+}
+    //Delete
     public function destroy($id)
     {
         $establecimiento = Establecimiento::find($id);

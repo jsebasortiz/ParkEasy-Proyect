@@ -8,16 +8,7 @@ use App\Models\EspacioEstacionamiento;
 
 class EspacioEstacionamientoController extends Controller
 {
-    /**
-     * @OA\Get(
-     *     path="/api/v1/espacios-estacionamiento",
-     *     summary="Obtener todos los espacios de estacionamiento",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Retorna todos los espacios de estacionamiento."
-     *     )
-     * )
-     */
+      //Index
     public function index()
     {
         $espaciosEstacionamiento = EspacioEstacionamiento::all();
@@ -27,29 +18,7 @@ class EspacioEstacionamientoController extends Controller
         ]);
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/espacios-estacionamiento",
-     *     summary="Crear un nuevo espacio de estacionamiento",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"nombre_espacio", "tipo_vehiculo", "ocupado"},
-     *             @OA\Property(property="nombre_espacio", type="string"),
-     *             @OA\Property(property="tipo_vehiculo", type="string"),
-     *             @OA\Property(property="ocupado", type="boolean")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Espacio de estacionamiento creado exitosamente."
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Error al crear el espacio de estacionamiento."
-     *     )
-     * )
-     */
+       //Create
     public function store(Request $request)
     {
         try {
@@ -66,24 +35,7 @@ class EspacioEstacionamientoController extends Controller
             ], 500);
         }
     }
-
-    /**
-     * @OA\Get(
-     *     path="/api/v1/espacios-estacionamiento/{id}",
-     *     summary="Obtener un espacio de estacionamiento por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID del espacio de estacionamiento",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="El espacio de estacionamiento no existe."
-     *     )
-     * )
-     */
+   //Show
     public function show($id)
     {
         $espacioEstacionamiento = EspacioEstacionamiento::find($id);
@@ -93,66 +45,36 @@ class EspacioEstacionamientoController extends Controller
         return response()->json(['espacio_estacionamiento' => $espacioEstacionamiento]);
     }
 
-    /**
-     * @OA\Put(
-     *     path="/api/v1/espacios-estacionamiento/{id}",
-     *     summary="Actualizar un espacio de estacionamiento por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID del espacio de estacionamiento",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"nombre_espacio", "tipo_vehiculo", "ocupado"},
-     *             @OA\Property(property="nombre_espacio", type="string"),
-     *             @OA\Property(property="tipo_vehiculo", type="string"),
-     *             @OA\Property(property="ocupado", type="boolean")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="El espacio de estacionamiento no existe."
-     *     )
-     * )
-     */
-    public function update(Request $request, $id)
+    //Update
+    public function update(Request $request)
     {
-        $espacioEstacionamiento = EspacioEstacionamiento::find($id);
-        if (!$espacioEstacionamiento) {
-            return response()->json(['error' => 'El espacio de estacionamiento no existe.'], 404);
-        }
-        $espacioEstacionamiento->update($request->all());
-        return response()->json([
-            'status' => true,
-            'message' => "Espacio de estacionamiento actualizado correctamente.",
-            'espacio_estacionamiento' => $espacioEstacionamiento
-        ], 200);
-    }
+        try {
+            $espacioEstacionamiento = EspacioEstacionamiento::find($request->id_espacio);
+            //dd($request->request);
 
-    /**
-     * @OA\Delete(
-     *     path="/api/v1/espacios-estacionamiento/{id}",
-     *     summary="Eliminar un espacio de estacionamiento por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID del espacio de estacionamiento",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="El espacio de estacionamiento no existe."
-     *     )
-     * )
-     */
+            if (!$espacioEstacionamiento) {
+                return response()->json(['error' => 'La espacioEstacionamiento no existe.'], 404);
+            }
+            /*$espacioEstacionamiento->placa_vehiculo = $request->placa_vehiculo;
+            $espacioEstacionamiento->placa_vehiculo = $request->placa_vehiculo;
+            $espacioEstacionamiento->update();*/
+            $espacioEstacionamiento->update($request->all()) ;
+            return response()->json([
+                'status' => true,
+                'message' => "espacioEstacionamiento actualizada correctamente.",
+                'espacioEstacionamiento' => $espacioEstacionamiento
+            ], 200); 
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => "Error al actualizar la espacioEstacionamiento"
+            ], 500);
+        }
+}
+   //Delete
     public function destroy($id)
     {
-        $espacioEstacionamiento = EspacioEstacionamiento::find($id);
+        $espacioEstacionamiento = EspacioEstacionamiento::find($id_espacio);
         if (!$espacioEstacionamiento) {
             return response()->json(['error' => 'El espacio de estacionamiento no existe.'], 404);
         }

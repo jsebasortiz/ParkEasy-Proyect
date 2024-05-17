@@ -9,7 +9,7 @@ use App\Models\Caja;
 
 class CajaController extends Controller
 {
-    
+    //Index
     public function index(Request $request)
     {
         $caja = Caja::all();
@@ -20,7 +20,7 @@ class CajaController extends Controller
         ]);
     }
 
-    
+    //Create
     public function store(Request $request)
     {
         //try {
@@ -32,7 +32,7 @@ class CajaController extends Controller
                 'caja' => $caja
             ], 200);
     }
-
+    //Show
     public function show($id)
     {
         $caja = Caja::find($id);
@@ -42,7 +42,7 @@ class CajaController extends Controller
         }
         return response()->json(['caja' => $caja]);
     }
-
+    //Update
     public function update(Request $request)
     {
         try {
@@ -65,7 +65,7 @@ class CajaController extends Controller
             ], 500);
         }
 }
-
+    //Delete
     public function destroy($id)
     {
         $caja = Caja::find($id);

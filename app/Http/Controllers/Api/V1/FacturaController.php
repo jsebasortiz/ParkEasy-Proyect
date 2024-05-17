@@ -25,17 +25,7 @@ use App\Models\Factura;
  */
 class FacturaController extends Controller
 {
-    /**
-     * @OA\Get(
-     *     path="/api/v1/categories",
-     *     summary="Obtener todas las categorías",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Retorna todas las categorías.",
-     *        
-     *     )
-     * )
-     */
+    //Index
     public function index(Request $request)
     {
         $factura = Factura::all();
@@ -46,25 +36,7 @@ class FacturaController extends Controller
         ]);
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/categories",
-     *     summary="Crear una nueva factura",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Factura")
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Categoría creada exitosamente.",
-     *         @OA\JsonContent(ref="#/components/schemas/Factura")
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Error al crear la factura."
-     *     )
-     * )
-     */
+     //Create
     public function store(Request $request)
     {
         //try {
@@ -82,24 +54,7 @@ class FacturaController extends Controller
         //     ], 500);
         // }
     }
-
-    /**
-     * @OA\Get(
-     *     path="/api/v1/categories/{id}",
-     *     summary="Obtener una factura por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID de la factura",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="La factura no existe."
-     *     )
-     * )
-     */
+    //Show
     public function show($id)
     {
         $factura = Factura::find($id);
@@ -109,28 +64,7 @@ class FacturaController extends Controller
         }
         return response()->json(['factura' => $factura]);
     }
-
-    /**
-     * @OA\Put(
-     *     path="/api/v1/categories/{id}",
-     *     summary="Actualizar una factura por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID de la factura",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Factura")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="La factura no existe."
-     *     )
-     * )
-     */
+    //Update
     public function update(Request $request)
     {
         try {
@@ -158,24 +92,7 @@ class FacturaController extends Controller
             ], 500);
         }
 }
-
-    /**
-     * @OA\Delete(
-     *     path="/api/v1/categories/{id}",
-     *     summary="Eliminar una factura por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID de la factura",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="La factura no existe."
-     *     )
-     * )
-     */
+    //Delete
     public function destroy($id)
     {
         $factura = Factura::find($id);

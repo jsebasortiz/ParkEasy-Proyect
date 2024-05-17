@@ -131,27 +131,33 @@ class TipoVehiculoController extends Controller
      *     )
      * )
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         try {
-            $tipovehiculo = TipoVehiculo::find($id);
+            $tipovehiculo = TipoVehiculo::find($request->id);
+            //dd($request->request);
 
             if (!$tipovehiculo) {
-                return response()->json(['error' => 'La categoría no existe.'], 404);
+                return response()->json(['error' => 'La tipovehiculo no existe.'], 404);
             }
-            $tipovehiculo->update($request->all());
+            /*$tipovehiculo->placa_vehiculo = $request->placa_vehiculo;
+            $tipovehiculo->placa_vehiculo = $request->placa_vehiculo;
+            $tipovehiculo->update();*/
+
+            $tipovehiculo->update($request->all()) ;
+
             return response()->json([
                 'status' => true,
-                'message' => "Categoría actualizada correctamente.",
+                'message' => "tipovehiculo actualizada correctamente.",
                 'tipovehiculo' => $tipovehiculo
-            ], 200);
+            ], 200); 
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => "Error al actualizar la categoría"
+                'message' => "Error al actualizar la tipovehiculo"
             ], 500);
         }
-    }
+}
 
     /**
      * @OA\Delete(

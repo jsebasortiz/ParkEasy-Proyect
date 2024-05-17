@@ -42,16 +42,26 @@ Route::prefix('v1')->group(function () {
     Route::post('facturaagregar', [FacturaController::class, 'store']);
     Route::delete('facturadestroy/{id_factura}', [FacturaController::class, 'destroy']);
     Route::post('facturaact', [FacturaController::class, 'update']);
+    //Caja 
+    Route::get('cajaver', [CajaController::class, 'index']);
+    Route::post('cajaagregar', [CajaController::class, 'store']);
+    Route::delete('cajadestroy/{id_caja}', [CajaController::class, 'destroy']);
+    Route::post('cajaact', [CajaController::class, 'update']);
+    //MovimientosCaja 
+    Route::get('movimientoscajaver', [MovimientosCajaController::class, 'index']);
+    Route::post('movimientoscajaagregar', [MovimientosCajaController::class, 'store']);
+    Route::delete('movimientoscajadestroy/{id_caja}', [MovimientosCajaController::class, 'destroy']);
+    Route::post('movimientoscajaact', [MovimientosCajaController::class, 'update']);
     //Establecimiento
     Route::get('establecimientover', [EstablecimientoController::class, 'index']);
     Route::post('establecimientoagregar', [EstablecimientoController::class, 'store']);
-    Route::delete('establecimientodestroy/{id_factura}', [EstablecimientoController::class, 'destroy']);
+    Route::delete('establecimientodestroy/{id_establecimiento}', [EstablecimientoController::class, 'destroy']);
     Route::post('establecimientoact', [EstablecimientoController::class, 'update']);
     //Espacio_estacionamiento
     Route::get('espacioestacionamientover', [EstablecimientoController::class, 'index']);
     Route::post('espacioestacionamientoagregar', [EstablecimientoController::class, 'store']);
-    Route::delete('espacioestacionamientodestroy/{id_factura}', [EstablecimientoController::class, 'destroy']);
-    Route::post('spacioestacionamientoact', [EstablecimientoController::class, 'update']);
+    Route::delete('espacioestacionamientodestroy/{id_espacio}', [EstablecimientoController::class, 'destroy']);
+    Route::post('espacioestacionamientoact', [EstablecimientoController::class, 'update']);
     //
 
     Route::get('categorias', [CategoryController::class, 'index']);

@@ -20,6 +20,7 @@ class MovimientosCaja extends Model
         'descripcion_movimiento',
         'tipo_movimiento',
         'monto_pagar',
+        
     ];
 
 
