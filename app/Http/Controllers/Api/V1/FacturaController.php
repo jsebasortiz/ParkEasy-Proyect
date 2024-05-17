@@ -7,22 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Factura;
 
 
-/**
- * @OA\Schema(
- *     schema="Factura",
- *     title="Factura",
- *     @OA\Property(
- *         property="nombre",
- *         type="string",
- *         description="Nombre de la factura"
- *     ),
- *     @OA\Property(
- *         property="descripcion",
- *         type="string",
- *         description="Descripción de la factura"
- *     )
- * )
- */
 class FacturaController extends Controller
 {
     //Index
