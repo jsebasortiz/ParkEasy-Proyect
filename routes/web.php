@@ -3,7 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
-
+use App\Http\Controllers\Api\V1\TipoVehiculoController;
+use App\Http\Controllers\Api\V1\FacturaController;
+use App\Http\Controllers\Api\V1\EstablecimientoController;
+use App\Http\Controllers\Api\V1\EspacioEstacionamientoController;
+use App\Http\Controllers\Api\V1\CajaController;
+use App\Http\Controllers\Api\V1\MovimientosCajaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

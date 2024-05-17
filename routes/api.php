@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\V1\CajaController;
 use App\Http\Controllers\Api\V1\MovimientosCajaController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,27 +33,27 @@ Route::prefix('v1')->group(function () {
     Route::post('login', [AuthController::class, 'authenticate']);
     Route::post('register', [AuthController::class, 'register']);
 
-    //Tipovehiculos
+    //Tipovehiculos --> Full
     Route::get('tipovehiculosver', [TipoVehiculoController::class, 'index']);
     Route::post('tipovehiculosagregar', [TipoVehiculoController::class, 'store']);
     Route::delete('tipovehiculosdestroy/{id_tipovehiculo}', [TipoVehiculoController::class, 'destroy']);
-    Route::get('tipovehiculosact', [TipoVehiculoController::class, 'update']);
-    //Facturas 
+    Route::post('tipovehiculosact', [TipoVehiculoController::class, 'update']);
+    //Facturas --> Full
     Route::get('facturaver', [FacturaController::class, 'index']);
     Route::post('facturaagregar', [FacturaController::class, 'store']);
     Route::delete('facturadestroy/{id_factura}', [FacturaController::class, 'destroy']);
     Route::post('facturaact', [FacturaController::class, 'update']);
-    //Caja 
+    //Caja --> Full
     Route::get('cajaver', [CajaController::class, 'index']);
     Route::post('cajaagregar', [CajaController::class, 'store']);
     Route::delete('cajadestroy/{id_caja}', [CajaController::class, 'destroy']);
     Route::post('cajaact', [CajaController::class, 'update']);
-    //MovimientosCaja 
+    //MovimientosCaja --> Full
     Route::get('movimientoscajaver', [MovimientosCajaController::class, 'index']);
     Route::post('movimientoscajaagregar', [MovimientosCajaController::class, 'store']);
     Route::delete('movimientoscajadestroy/{id_caja}', [MovimientosCajaController::class, 'destroy']);
     Route::post('movimientoscajaact', [MovimientosCajaController::class, 'update']);
-    //Establecimiento
+    //Establecimiento --> Full
     Route::get('establecimientover', [EstablecimientoController::class, 'index']);
     Route::post('establecimientoagregar', [EstablecimientoController::class, 'store']);
     Route::delete('establecimientodestroy/{id_establecimiento}', [EstablecimientoController::class, 'destroy']);

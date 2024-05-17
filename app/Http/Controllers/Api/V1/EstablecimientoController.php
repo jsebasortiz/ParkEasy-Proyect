@@ -27,7 +27,7 @@ class EstablecimientoController extends Controller{
             return response()->json([
                 'status' => true,
                 'message' => "Establecimiento fue creado exitosamente!",
-                'establecimiento' => $Establecimiento
+                'establecimiento' => $establecimiento
             ], 200);
         // } catch (\Throwable $th) {
         //     return response()->json([
@@ -50,7 +50,7 @@ class EstablecimientoController extends Controller{
     public function update(Request $request)
     {
         try {
-            $establecimiento = Establecimiento::find($request->id);
+            $establecimiento = Establecimiento::find($request->id_establecimiento);
             //dd($request->request);
 
             if (!$establecimiento) {
@@ -73,11 +73,11 @@ class EstablecimientoController extends Controller{
         }
 }
     //Delete
-    public function destroy($id)
+    public function destroy($id_establecimiento)
     {
-        $establecimiento = Establecimiento::find($id);
+        $establecimiento = Establecimiento::find($id_establecimiento);
 
-        if (!$tipovehiculo) {
+        if (!$establecimiento) {
             return response()->json(['error' => 'El Establecimiento no existe.'], 404);
         }
         $establecimiento->delete();

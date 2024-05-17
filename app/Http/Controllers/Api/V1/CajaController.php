@@ -46,7 +46,7 @@ class CajaController extends Controller
     public function update(Request $request)
     {
         try {
-            $caja = Caja::find($request->id_factura);
+            $caja = Caja::find($request->id_caja);
             //dd($request->request);
 
             if (!$caja) {

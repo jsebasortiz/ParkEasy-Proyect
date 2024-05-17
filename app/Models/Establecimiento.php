@@ -19,4 +19,5 @@ class Establecimiento extends Model
         'direccion',
         'nit'
     ];
+    public $timestamps = false;
 }

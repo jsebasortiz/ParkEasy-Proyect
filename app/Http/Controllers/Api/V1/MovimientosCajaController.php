@@ -52,7 +52,7 @@ class MovimientosCajaController extends Controller
     public function update(Request $request)
     {
         try {
-            $movimiento = Factura::find($request->id_caja);
+            $movimiento = MovimientosCaja::find($request->id_movimiento);
             //dd($request->request);
 
             if (!$movimiento) {
