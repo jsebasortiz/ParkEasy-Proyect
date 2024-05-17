@@ -131,27 +131,33 @@ class FacturaController extends Controller
      *     )
      * )
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         try {
-            $factura = Factura::find($id);
+            $factura = Factura::find($request->id_factura);
+            //dd($request->request);
 
             if (!$factura) {
                 return response()->json(['error' => 'La factura no existe.'], 404);
             }
-            $factura->update($request->all());
+            /*$factura->placa_vehiculo = $request->placa_vehiculo;
+            $factura->placa_vehiculo = $request->placa_vehiculo;
+            $factura->update();*/
+
+            $factura->update($request->all()) ;
+
             return response()->json([
                 'status' => true,
                 'message' => "factura actualizada correctamente.",
                 'factura' => $factura
-            ], 200);
+            ], 200); 
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
                 'message' => "Error al actualizar la factura"
             ], 500);
         }
-    }
+}
 
     /**
      * @OA\Delete(

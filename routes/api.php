@@ -7,6 +7,9 @@ use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\TipoVehiculoController;
 use App\Http\Controllers\Api\V1\FacturaController;
+use App\Http\Controllers\Api\V1\EstablecimientoController;
+use App\Http\Controllers\Api\V1\EspacioEstacionamiento;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +34,23 @@ Route::prefix('v1')->group(function () {
     Route::get('facturaver', [FacturaController::class, 'index']);
     Route::post('facturaagregar', [FacturaController::class, 'store']);
     Route::delete('facturadestroy/{id_factura}', [FacturaController::class, 'destroy']);
-    Route::put('facturaact/{id_factura}', [FacturaController::class, 'update']);
+    
+    Route::post('facturaact', [FacturaController::class, 'update']);
+    //Establecimiento
+    Route::get('establecimientover', [EstablecimientoController::class, 'index']);
+    Route::post('establecimientoagregar', [EstablecimientoController::class, 'store']);
+    Route::delete('establecimientodestroy/{id_factura}', [EstablecimientoController::class, 'destroy']);
+    Route::post('establecimientoact/{id_factura}', [EstablecimientoController::class, 'update']);
+    //Espacio_estacionamiento
+    Route::get('espacioestacionamientover', [EstablecimientoController::class, 'index']);
+    Route::post('espacioestacionamientoagregar', [EstablecimientoController::class, 'store']);
+    Route::delete('espacioestacionamientodestroy/{id_factura}', [EstablecimientoController::class, 'destroy']);
+    Route::post('spacioestacionamientoact/{id_factura}', [EstablecimientoController::class, 'update']);
+    //
 
 
-    Route::post('tipovehiculosstore', [TipoVehiculoController::class, 'store']);
-    Route::delete('tipovehiculosdestroy/{id_vehiculo}', [TipoVehiculoController::class, 'destroy']);
+    //Route::post('tipovehiculosstore', [TipoVehiculoController::class, 'store']);
+    // Route::delete('tipovehiculosdestroy/{id_vehiculo}', [TipoVehiculoController::class, 'destroy']);
     // Route::get('favorites', [FavoriteController::class, 'index']);
     // Route::get('favorites/{id}', [FavoriteController::class, 'show']);
     // Route::apiResource('categoria', CategoriaController::class);
