@@ -25,29 +25,34 @@ use App\Http\Controllers\Api\V1\EspacioEstacionamiento;
 Route::prefix('v1')->group(function () {
     //Prefijo V1, todo lo que este dentro de este grupo se accedera escribiendo v1 en el navegador,
     // es decir /api/v1/*
+
+    //Login
     Route::post('login', [AuthController::class, 'authenticate']);
     Route::post('register', [AuthController::class, 'register']);
 
-    Route::get('categorias', [CategoryController::class, 'index']);
-    Route::get('tipovehiculos', [TipoVehiculoController::class, 'index']);
+    //Tipovehiculos
+    Route::get('tipovehiculosver', [TipoVehiculoController::class, 'index']);
+    Route::post('tipovehiculosagregar', [TipoVehiculoController::class, 'store']);
+    Route::delete('tipovehiculosdestroy/{id_tipovehiculo}', [TipoVehiculoController::class, 'destroy']);
+    Route::get('tipovehiculosact', [TipoVehiculoController::class, 'update']);
     //Facturas 
     Route::get('facturaver', [FacturaController::class, 'index']);
     Route::post('facturaagregar', [FacturaController::class, 'store']);
     Route::delete('facturadestroy/{id_factura}', [FacturaController::class, 'destroy']);
-    
     Route::post('facturaact', [FacturaController::class, 'update']);
     //Establecimiento
     Route::get('establecimientover', [EstablecimientoController::class, 'index']);
     Route::post('establecimientoagregar', [EstablecimientoController::class, 'store']);
     Route::delete('establecimientodestroy/{id_factura}', [EstablecimientoController::class, 'destroy']);
-    Route::post('establecimientoact/{id_factura}', [EstablecimientoController::class, 'update']);
+    Route::post('establecimientoact', [EstablecimientoController::class, 'update']);
     //Espacio_estacionamiento
     Route::get('espacioestacionamientover', [EstablecimientoController::class, 'index']);
     Route::post('espacioestacionamientoagregar', [EstablecimientoController::class, 'store']);
     Route::delete('espacioestacionamientodestroy/{id_factura}', [EstablecimientoController::class, 'destroy']);
-    Route::post('spacioestacionamientoact/{id_factura}', [EstablecimientoController::class, 'update']);
+    Route::post('spacioestacionamientoact', [EstablecimientoController::class, 'update']);
     //
 
+    Route::get('categorias', [CategoryController::class, 'index']);
 
     //Route::post('tipovehiculosstore', [TipoVehiculoController::class, 'store']);
     // Route::delete('tipovehiculosdestroy/{id_vehiculo}', [TipoVehiculoController::class, 'destroy']);
