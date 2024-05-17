@@ -16,6 +16,7 @@ class EspacioEstacionamiento extends Model
     protected $fillable = [
         'nombre_espacio',
         'tipo_vehiculo',
+        'id_espacio',
         'ocupado',
     ];
 

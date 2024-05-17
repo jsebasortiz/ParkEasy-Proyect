@@ -6,35 +6,10 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-/**
- * @OA\Schema(
- *     schema="Categoria",
- *     title="Categoria",
- *     @OA\Property(
- *         property="nombre",
- *         type="string",
- *         description="Nombre de la categoría"
- *     ),
- *     @OA\Property(
- *         property="descripcion",
- *         type="string",
- *         description="Descripción de la categoría"
- *     )
- * )
- */
+
 class CategoryController extends Controller
 {
-    /**
-     * @OA\Get(
-     *     path="/api/v1/categories",
-     *     summary="Obtener todas las categorías",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Retorna todas las categorías.",
-     *        
-     *     )
-     * )
-     */
+
     public function index(Request $request)
     {
         $categorias = Categoria::all();
@@ -45,25 +20,6 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/categories",
-     *     summary="Crear una nueva categoría",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Categoria")
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Categoría creada exitosamente.",
-     *         @OA\JsonContent(ref="#/components/schemas/Categoria")
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Error al crear la categoría."
-     *     )
-     * )
-     */
     public function store(Request $request)
     {
         try {
@@ -82,23 +38,6 @@ class CategoryController extends Controller
         }
     }
 
-    /**
-     * @OA\Get(
-     *     path="/api/v1/categories/{id}",
-     *     summary="Obtener una categoría por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID de la categoría",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="La categoría no existe."
-     *     )
-     * )
-     */
     public function show($id)
     {
         $categoria = Categoria::find($id);
@@ -109,27 +48,6 @@ class CategoryController extends Controller
         return response()->json(['categoria' => $categoria]);
     }
 
-    /**
-     * @OA\Put(
-     *     path="/api/v1/categories/{id}",
-     *     summary="Actualizar una categoría por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID de la categoría",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Categoria")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="La categoría no existe."
-     *     )
-     * )
-     */
     public function update(Request $request, $id)
     {
         try {
@@ -151,24 +69,7 @@ class CategoryController extends Controller
             ], 500);
         }
     }
-
-    /**
-     * @OA\Delete(
-     *     path="/api/v1/categories/{id}",
-     *     summary="Eliminar una categoría por su ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="ID de la categoría",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="La categoría no existe."
-     *     )
-     * )
-     */
+    
     public function destroy($id)
     {
         $categoria = Categoria::find($id);

@@ -8,7 +8,9 @@ use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\TipoVehiculoController;
 use App\Http\Controllers\Api\V1\FacturaController;
 use App\Http\Controllers\Api\V1\EstablecimientoController;
-use App\Http\Controllers\Api\V1\EspacioEstacionamiento;
+use App\Http\Controllers\Api\V1\EspacioEstacionamientoController;
+use App\Http\Controllers\Api\V1\CajaController;
+use App\Http\Controllers\Api\V1\MovimientosCajaController;
 
 
 /*
