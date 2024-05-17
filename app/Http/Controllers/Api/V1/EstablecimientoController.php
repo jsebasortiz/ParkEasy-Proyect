@@ -37,9 +37,9 @@ class EstablecimientoController extends Controller{
         // }
     }
     //Show
-    public function show($id)
+    public function show($id_establecimiento)
     {
-        $establecimiento = Establecimiento::find($id);
+        $establecimiento = Establecimiento::find($id_establecimiento);
 
         if (!$establecimiento) {
             return response()->json(['error' => 'La categoría no existe.'], 404);

@@ -38,9 +38,9 @@ class MovimientosCajaController extends Controller
     }
 
     //obtener registro específico por ID
-    public function show($id)
+    public function show($id_movimiento)
     {
-        $movimiento = MovimientosCaja::find($id);
+        $movimiento = MovimientosCaja::find($id_movimiento);
 
         if (!$movimiento) {
             return response()->json(['error' => 'El movimiento no existe.'], 404);

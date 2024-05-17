@@ -36,9 +36,9 @@ class EspacioEstacionamientoController extends Controller
         }
     }
    //Show
-    public function show($id)
+    public function show($id_espacio)
     {
-        $espacioEstacionamiento = EspacioEstacionamiento::find($id);
+        $espacioEstacionamiento = EspacioEstacionamiento::find($id_espacio);
         if (!$espacioEstacionamiento) {
             return response()->json(['error' => 'El espacio de estacionamiento no existe.'], 404);
         }
@@ -72,7 +72,7 @@ class EspacioEstacionamientoController extends Controller
         }
 }
    //Delete
-    public function destroy($id)
+    public function destroy($id_espacio)
     {
         $espacioEstacionamiento = EspacioEstacionamiento::find($id_espacio);
         if (!$espacioEstacionamiento) {

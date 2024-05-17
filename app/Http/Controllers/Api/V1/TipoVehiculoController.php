@@ -40,9 +40,9 @@ class TipoVehiculoController extends Controller
     }
 
     //Show
-    public function show($id)
+    public function show($id_vehiculo)
     {
-        $tipovehiculo = TipoVehiculo::find($id);
+        $tipovehiculo = TipoVehiculo::find($id_vehiculo);
 
         if (!$tipovehiculo) {
             return response()->json(['error' => 'La tipo_vehiculo no existe.'], 404);
@@ -77,9 +77,9 @@ class TipoVehiculoController extends Controller
         }
 }
     //Delete
-    public function destroy($id)
+    public function destroy($id_vehiculo)
     {
-        $tipovehiculo = TipoVehiculo::find($id);
+        $tipovehiculo = TipoVehiculo::find($id_vehiculo);
 
         if (!$tipovehiculo) {
             return response()->json(['error' => 'El tipo_vehiculo no existe.'], 404);

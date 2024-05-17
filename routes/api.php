@@ -12,8 +12,6 @@ use App\Http\Controllers\Api\V1\EspacioEstacionamientoController;
 use App\Http\Controllers\Api\V1\CajaController;
 use App\Http\Controllers\Api\V1\MovimientosCajaController;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,38 +33,44 @@ Route::prefix('v1')->group(function () {
 
     //Tipovehiculos --> Full
     Route::get('tipovehiculosver', [TipoVehiculoController::class, 'index']);
+    Route::get('tipovehiculos/{id_tipovehiculo}', [EspacioEstacionamientoController::class, 'show']);
     Route::post('tipovehiculosagregar', [TipoVehiculoController::class, 'store']);
     Route::delete('tipovehiculosdestroy/{id_tipovehiculo}', [TipoVehiculoController::class, 'destroy']);
     Route::post('tipovehiculosact', [TipoVehiculoController::class, 'update']);
     //Facturas --> Full
     Route::get('facturaver', [FacturaController::class, 'index']);
+    Route::get('facturabuscar/{id_factura}', [EspacioEstacionamientoController::class, 'show']);
     Route::post('facturaagregar', [FacturaController::class, 'store']);
     Route::delete('facturadestroy/{id_factura}', [FacturaController::class, 'destroy']);
     Route::post('facturaact', [FacturaController::class, 'update']);
     //Caja --> Full
     Route::get('cajaver', [CajaController::class, 'index']);
+    Route::get('cajabuscar/{id_caja}', [EspacioEstacionamientoController::class, 'show']);
     Route::post('cajaagregar', [CajaController::class, 'store']);
     Route::delete('cajadestroy/{id_caja}', [CajaController::class, 'destroy']);
     Route::post('cajaact', [CajaController::class, 'update']);
     //MovimientosCaja --> Full
     Route::get('movimientoscajaver', [MovimientosCajaController::class, 'index']);
+    Route::get('movimientobuscar/{id_caja}', [EspacioEstacionamientoController::class, 'show']);
     Route::post('movimientoscajaagregar', [MovimientosCajaController::class, 'store']);
     Route::delete('movimientoscajadestroy/{id_caja}', [MovimientosCajaController::class, 'destroy']);
     Route::post('movimientoscajaact', [MovimientosCajaController::class, 'update']);
     //Establecimiento --> Full
     Route::get('establecimientover', [EstablecimientoController::class, 'index']);
+    Route::get('estacionamientobuscar/{id_establecimiento}', [EspacioEstacionamientoController::class, 'show']);
     Route::post('establecimientoagregar', [EstablecimientoController::class, 'store']);
     Route::delete('establecimientodestroy/{id_establecimiento}', [EstablecimientoController::class, 'destroy']);
     Route::post('establecimientoact', [EstablecimientoController::class, 'update']);
     //Espacio_estacionamiento
-    Route::get('espacioestacionamientover', [EstablecimientoController::class, 'index']);
-    Route::post('espacioestacionamientoagregar', [EstablecimientoController::class, 'store']);
-    Route::delete('espacioestacionamientodestroy/{id_espacio}', [EstablecimientoController::class, 'destroy']);
-    Route::post('espacioestacionamientoact', [EstablecimientoController::class, 'update']);
+    Route::get('espacioestacionamientover', [EspacioEstacionamientoController::class, 'index']);
+    Route::get('espacioestacionamientobuscar/{id_espacio}', [EspacioEstacionamientoController::class, 'show']);
+    Route::post('espacioestacionamientoagregar', [EspacioEstacionamientoController::class, 'store']);
+    Route::delete('espacioestacionamientodestroy/{id_espacio}', [EspacioEstacionamientoController::class, 'destroy']);
+    Route::post('espacioestacionamientoact', [EspacioEstacionamientoController::class, 'update']);
     //
 
-    Route::get('categorias', [CategoryController::class, 'index']);
 
+    Route::get('categorias', [CategoryController::class, 'index']);
     //Route::post('tipovehiculosstore', [TipoVehiculoController::class, 'store']);
     // Route::delete('tipovehiculosdestroy/{id_vehiculo}', [TipoVehiculoController::class, 'destroy']);
     // Route::get('favorites', [FavoriteController::class, 'index']);

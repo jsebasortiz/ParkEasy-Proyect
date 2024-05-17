@@ -33,9 +33,9 @@ class CajaController extends Controller
             ], 200);
     }
     //Show
-    public function show($id)
+    public function show($id_caja)
     {
-        $caja = Caja::find($id);
+        $caja = Caja::find($id_caja);
 
         if (!$caja) {
             return response()->json(['error' => 'La caja no existe.'], 404);

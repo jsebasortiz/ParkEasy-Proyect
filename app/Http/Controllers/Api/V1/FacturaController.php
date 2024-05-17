@@ -55,9 +55,9 @@ class FacturaController extends Controller
         // }
     }
     //Show
-    public function show($id)
+    public function show($id_factura)
     {
-        $factura = Factura::find($id);
+        $factura = Factura::find($id_factura);
 
         if (!$factura) {
             return response()->json(['error' => 'La factura no existe.'], 404);
