@@ -10,37 +10,10 @@ use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @OA\Info(title="API Auth", version="1.0")
- *
- * @OA\Server(url="http://api.marketfitcolombia.com")
- */
+
 class AuthController extends Controller
 {
-    /**
-     * @OA\Post(
-     *     path="/api/v1/register",
-     *     summary="Registrar usuarios",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Registra usuario y retorna info y token."
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Ha ocurrido un error."
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"name","email","password"},
-     *             @OA\Property(property="name", type="string"),
-     *             @OA\Property(property="email", type="string", format="email"),
-     *             @OA\Property(property="password", type="string", format="password")
-     *      *         
-     *         ),
-     *     ),
-     * )
-     */
+    
     //**Función para registrar al usuario**//
     public function register(Request $request)
     {
@@ -71,28 +44,7 @@ class AuthController extends Controller
         ], Response::HTTP_OK);
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/login",
-     *     summary="Iniciar sesión",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Inicia sesión y retorna token."
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Credenciales inválidas."
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"email","password"},
-     *             @OA\Property(property="email", type="string", format="email"),
-     *             @OA\Property(property="password", type="string", format="password")
-     *         ),
-     *     ),
-     * )
-     */
+    
     //Funcion para hacer login
     public function authenticate(Request $request)
     {
@@ -129,27 +81,7 @@ class AuthController extends Controller
         ], 200);
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/logout",
-     *     summary="Cerrar sesión",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Cerrar sesión exitosamente."
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Error al cerrar sesión."
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"token"},
-     *             @OA\Property(property="token", type="string")
-     *         ),
-     *     ),
-     * )
-     */
+    
     //Función para eliminar el token y desconectar al usuario
     public function logout(Request $request)
     {
@@ -177,27 +109,7 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/user",
-     *     summary="Obtener información del usuario",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Información del usuario obtenida."
-     *     ),
-     *     @OA\Response(
-     *         response=401,
-     *         description="Token inválido o expirado."
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"token"},
-     *             @OA\Property(property="token", type="string")
-     *         ),
-     *     ),
-     * )
-     */
+
     //Función que obtiene los datos del usuario y valida si el token a expirado.
     public function getUser(Request $request)
     {
@@ -217,30 +129,7 @@ class AuthController extends Controller
         return response()->json(['user' => $user]);
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/user/update",
-     *     summary="Actualizar información del usuario",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Usuario actualizado correctamente."
-     *     ),
-     *     @OA\Response(
-     *         response=401,
-     *         description="Token inválido o expirado."
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"token"},
-     *             @OA\Property(property="token", type="string"),
-     *             @OA\Property(property="name", type="string"),
-     *             @OA\Property(property="email", type="string", format="email"),
-     *             @OA\Property(property="password", type="string", format="password")
-     *         ),
-     *     ),
-     * )
-     */
+    
     //Función que actualiza los datos del usuario
     public function updateUser(Request $request)
     {

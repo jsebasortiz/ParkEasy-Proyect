@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\V1\EspacioEstacionamientoController;
 use App\Http\Controllers\Api\V1\CajaController;
 use App\Http\Controllers\Api\V1\MovimientosCajaController;
 use App\Http\Controllers\Api\V1\IngresoVehiculosController;
+use App\Http\Controllers\Api\V1\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,12 @@ Route::prefix('v1')->group(function () {
     //Login
     Route::post('login', [AuthController::class, 'authenticate']);
     Route::post('register', [AuthController::class, 'register']);
-
+    //Usuarios
+    Route::get('usersver', [UserController::class, 'index']);
+    Route::get('users/{id}', [UserController::class, 'show']);
+    Route::post('userscrear', [UserController::class, 'store']);    
+    Route::delete('usersdestroy/{id}', [UserController::class, 'destroy']);    
+    Route::post('usersact/{id}', [UserController::class, 'update']);    
     //Tipovehiculos --> Full
     Route::get('tipovehiculosver', [TipoVehiculoController::class, 'index']);
     Route::get('tipovehiculos/{id_tipovehiculo}', [TipoVehiculoController::class, 'show']);
