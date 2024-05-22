@@ -76,6 +76,7 @@ Route::prefix('v1')->group(function () {
     Route::post('establecimientoact', [EstablecimientoController::class, 'update']);
     //Espacio_estacionamiento --> Full
     Route::get('espacioestacionamientover', [EspacioEstacionamientoController::class, 'index']);
+    Route::get('getEspacioslibres', [EspacioEstacionamientoController::class, 'getEspacioslibres']);
     Route::get('espacioestacionamientobuscar/{id_espacio}', [EspacioEstacionamientoController::class, 'show']);
     Route::post('espacioestacionamientoagregar', [EspacioEstacionamientoController::class, 'store']);
     Route::delete('espacioestacionamientodestroy/{id_espacio}', [EspacioEstacionamientoController::class, 'destroy']);

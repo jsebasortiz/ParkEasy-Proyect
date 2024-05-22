@@ -81,4 +81,13 @@ class EspacioEstacionamientoController extends Controller
         $espacioEstacionamiento->delete();
         return response()->json(['message' => 'El espacio de estacionamiento fue eliminado correctamente.']);
     }
+    public function getEspacioslibres (){
+        $espacioslibres = EspacioEstacionamiento::where('ocupado','=',false)->get();
+        return response()->json([
+            'status' => true,
+            'espacios_libres' => $espacioslibres
+        ]);
+    }
 }
+
+
