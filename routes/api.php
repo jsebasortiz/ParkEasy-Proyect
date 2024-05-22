@@ -81,8 +81,6 @@ Route::prefix('v1')->group(function () {
     Route::delete('espacioestacionamientodestroy/{id_espacio}', [EspacioEstacionamientoController::class, 'destroy']);
     Route::post('espacioestacionamientoact', [EspacioEstacionamientoController::class, 'update']);
     //
-
-
     Route::get('categorias', [CategoryController::class, 'index']);
     //Route::post('tipovehiculosstore', [TipoVehiculoController::class, 'store']);
     // Route::delete('tipovehiculosdestroy/{id_vehiculo}', [TipoVehiculoController::class, 'destroy']);
